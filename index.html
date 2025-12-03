@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Study & Vibe</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Quicksand:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- ===================== MAIN APP ===================== -->
+  <div id="mainApp">
+    
+    <!-- ===================== NAV HEADER ===================== -->
+    <header class="topbar">
+      <div class="logo">Study & Vibe 🎵</div>
+      <nav class="tabs">
+        <button class="tab active" data-tab="timer">Timer</button>
+        <button class="tab" data-tab="subject-checklist">Subjects</button>
+        <button class="tab" data-tab="weekly-planner">Weekly Planner</button>
+        <button class="tab" data-tab="monthly-planner">Monthly Planner</button>
+        <button class="tab" data-tab="mental-health">Mental Health</button>
+      </nav>
+      <div class="openSettings settings-icon">⚙</div>
+    </header>
+
+    <!-- ===================== TAB PANELS (FULL PAGE) ===================== -->
+    <main class="tab-panels-container">
+
+      <!-- ===================== TIMER TAB (NOW FIRST) ===================== -->
+      <div id="timer" class="tab-panel active">
+        <div class="timer-wrapper">
+          <h1 class="timer-title">Focus Timer ⏱️</h1>
+          
+          <div class="timer-display" id="time-display">00:00:00</div>
+          
+          <input type="text" id="session-label" placeholder="Session name..." class="session-label" />
+          
+          <div class="timer-controls">
+            <button id="start-btn" class="control-btn start-btn">Start</button>
+            <button id="pause-btn" class="control-btn pause-btn">Pause</button>
+            <button id="reset-btn" class="control-btn reset-btn">Reset</button>
+            <button id="save-btn" class="control-btn save-btn">Save Session</button>
+          </div>
+
+          <div class="sessions-section">
+            <h2>Saved Sessions</h2>
+            <div id="session-list" class="session-list">
+              <!-- Sessions will appear here -->
+            </div>
+          </div>
+
+          <div id="celebration" class="celebration"></div>
+        </div>
+      </div>
+
+      <!-- ===================== SUBJECT CHECKLIST TAB (NOW SECOND) ===================== -->
+      <div id="subject-checklist" class="tab-panel">
+        <div class="checklist-wrapper">
+          <h1 class="checklist-page-title">Subject Checklist 📚</h1>
+          
+          <div class="add-subject-section">
+            <input type="text" id="new-subject" placeholder="Add a new subject…">
+            <button id="add-subject-btn" class="add-subject-btn">+ Add Subject</button>
+          </div>
+
+          <div class="subjects-container">
+            <div id="subjects-list" class="subjects-list">
+              <!-- Subjects will be added here -->
+            </div>
+          </div>
+
+          <div class="study-progress">
+            <h3>Study Progress</h3>
+            <div class="progress-bar">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <p id="progress-text">0% Complete</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== WEEKLY PLANNER TAB (NOW THIRD) ===================== -->
+      <div id="weekly-planner" class="tab-panel">
+        <div class="planner-wrapper">
+          <h1 class="planner-page-title">Weekly Planner 📆</h1>
+          
+          <div class="week-info">
+            <h2 id="week-display">Week of December 2 - 8, 2024</h2>
+            <button id="next-week-btn" class="week-btn">Next Week →</button>
+            <button id="prev-week-btn" class="week-btn">← Previous Week</button>
+          </div>
+
+          <div class="weekly-grid-container">
+            <div class="weekly-day-card" data-day="Mon">
+              <h3>Monday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+            <div class="weekly-day-card" data-day="Tue">
+              <h3>Tuesday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+            <div class="weekly-day-card" data-day="Wed">
+              <h3>Wednesday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+            <div class="weekly-day-card" data-day="Thu">
+              <h3>Thursday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+            <div class="weekly-day-card" data-day="Fri">
+              <h3>Friday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+            <div class="weekly-day-card" data-day="Sat">
+              <h3>Saturday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+            <div class="weekly-day-card" data-day="Sun">
+              <h3>Sunday</h3>
+              <textarea placeholder="Add tasks..."></textarea>
+            </div>
+          </div>
+
+          <div class="week-actions">
+            <textarea id="weekly-input" placeholder="Weekly summary and goals…"></textarea>
+            <button id="weekly-send-btn" class="planner-send-btn">Save Weekly Plan</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== MONTHLY PLANNER TAB (NOW FOURTH) ===================== -->
+      <div id="monthly-planner" class="tab-panel">
+        <div class="planner-wrapper">
+          <h1 class="planner-page-title">Monthly Calendar 📅</h1>
+          
+          <div class="calendar-controls">
+            <button id="prev-month" class="month-btn">← Previous</button>
+            <h2 id="current-month" class="current-month">December 2024</h2>
+            <button id="next-month" class="month-btn">Next →</button>
+          </div>
+
+          <div class="calendar-container">
+            <div class="weekdays">
+              <div class="weekday">Sun</div>
+              <div class="weekday">Mon</div>
+              <div class="weekday">Tue</div>
+              <div class="weekday">Wed</div>
+              <div class="weekday">Thu</div>
+              <div class="weekday">Fri</div>
+              <div class="weekday">Sat</div>
+            </div>
+            <div id="calendar-grid" class="calendar-grid">
+              <!-- Days will be generated by JavaScript -->
+            </div>
+          </div>
+
+          <div class="month-notes">
+            <h3>Monthly Notes & Goals</h3>
+            <div id="monthly-goals-list" class="monthly-goals-list">
+              <!-- Goals will appear here -->
+            </div>
+            <textarea id="monthly-input" placeholder="Your goals, notes, mood…"></textarea>
+            <button id="monthly-send-btn" class="planner-send-btn">Add Goal</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===================== MENTAL HEALTH TAB (NOW LAST) ===================== -->
+      <div id="mental-health" class="tab-panel">
+        <div class="mental-health-wrapper">
+          <!-- Left Side: Quote Bubble -->
+          <div class="mh-left">
+            <div class="mh-quote-bubble">
+              Don't feel bad or guilty for experiencing sadness. Sometimes its okay not to be okay. You may not have a reason and you don't have to explain it to anyone at all. Emotions can be complicated and thats the beauty of it...sometimes the best thing you can do is take care of yourself and remember that these feeling are temporary. Surround yourself with love and happiness and let it find you. YOU CAN DO IT!🪄♥✨
+            </div>
+          </div>
+
+          <!-- Right Side: Input Area -->
+          <div class="mh-right">
+            <h2 class="mh-title">Share your thoughts…</h2>
+            <p class="mh-subtitle">Your safe space to express yourself</p>
+            <textarea id="mh-input" placeholder="Type anything you're feeling… no judgement, ever."></textarea>
+            <button id="mh-send-btn" class="mh-send-btn">Send Anonymously</button>
+            <p class="mh-note">✨ Your thoughts are saved securely and privately.</p>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- Footer shown at bottom of every page -->
+    <footer class="app-footer">© 2025 a.s.STUDYVIBEZZZS. All rights reserved.</footer>
+
+  </div>
+
+  <!-- ===================== SETTINGS PANEL ===================== -->
+  <div id="settingsPanel" class="settings-panel">
+    <div class="settings-header">
+      <h2>Settings</h2>
+      <span id="closeSettings" class="close-btn">×</span>
+    </div>
+
+    <div class="settings-section">
+      <label>User ID:</label>
+      <input type="text" id="userIdInput" placeholder="Enter your username">
+    </div>
+
+    <div class="settings-section">
+      <label>Your Motto:</label>
+      <input type="text" id="mottoInput" placeholder="Your vibe, your rule">
+    </div>
+
+    <div class="settings-section toggle-row">
+      <label>Dark Mode</label>
+      <input type="checkbox" id="darkModeToggle" checked>
+    </div>
+
+    <button id="saveSettingsBtn" class="save-btn">Save Settings</button>
+  </div>
+
+  <!-- EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    emailjs.init("e7d5XL-TefZz8Lknl");
+    const EMAILJS_SERVICE_ID = "service_z5chqub";
+    const EMAILJS_TEMPLATE_ID = "template_aznvpap";
+  </script>
+
+  <script src="script.js"></script>
+</body>
+</html>
